@@ -9,9 +9,12 @@ export default async function Home() {
     redirect("/signIn");
   }
 
+  console.log(session);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <div>Welcome: {session?.user?.name}</div>
+      <div>User ID: {session?.user?.id}</div>
       <LogoutButton />
     </main>
   );

@@ -10,4 +10,18 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.LINE_CLIENT_SECRET!,
     }),
   ],
+  callbacks: {
+    async jwt({ token, profile }) {
+      if (profile) {
+        token.sub = profile.sub;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub as string;
+      }
+      return session;
+    },
+  },
 };
