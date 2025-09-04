@@ -1,3 +1,4 @@
+import { FriendStatus } from "@/components/FriendStatus";
 import { LogoutButton } from "@/components/LogoutButton";
 import { authOptions } from "@/untils/option";
 import { getServerSession } from "next-auth";
@@ -15,6 +16,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       <div>Welcome: {session?.user?.name}</div>
       <div>User ID: {session?.user?.id}</div>
+      <FriendStatus userId={session?.user?.id} />
       <LogoutButton />
     </main>
   );
